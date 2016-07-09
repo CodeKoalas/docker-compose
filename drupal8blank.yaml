@@ -1,0 +1,36 @@
+version: '2'
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    restart: always
+  d8blank:
+    container_name: drupal8
+    image: codekoalas/drupal8
+    environment:
+      VIRTUAL_HOST: .d8blank.dev
+      GIT_HOSTS: "10.170.3.208    gitlab.codekoalas.com"
+      GIT_REPO: https://gitlab.codekoalas.com/kknopp/drupal8blank.git
+      GIT_BRANCH: master
+      MYSQL_SERVER: mysql
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+      DRUPAL_BASE_URL: http://d8blank.dev
+      DRUPAL_TRUSTED_HOSTS: d8blank\.dev$$
+      DRUPAL_HTTPS: "off"
+      APACHE_DOCROOT: /var/www/site/docroot
+      SESAuthUser: AKIAJFJQ77YMDGXMKPSQ
+      SESAuthPass: AkF9B5TaotHP7KoeM5JVa8BA11feiq1dbE/cgzKS3Qve
+      SESmailhub: email-smtp.us-west-2.amazonaws.com:465
+    volumes:
+      - /Users/kknopp/Documents/repos/sites-files/drupal8.blank:/mnt/sites-files
+      - /Users/kknopp/Documents/repos/drupal8.blank:/var/www/site
+    links:
+      - mysql:mysql
+    restart: always
