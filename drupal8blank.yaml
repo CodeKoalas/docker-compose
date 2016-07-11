@@ -10,7 +10,7 @@ services:
       MYSQL_PASSWORD: mysql
     restart: always
   d8blank:
-    container_name: drupal8
+    container_name: d8blank
     image: codekoalas/drupal8
     environment:
       VIRTUAL_HOST: .d8blank.dev
@@ -29,8 +29,8 @@ services:
       SESAuthPass: AkF9B5TaotHP7KoeM5JVa8BA11feiq1dbE/cgzKS3Qve
       SESmailhub: email-smtp.us-west-2.amazonaws.com:465
     volumes:
-      - /Users/kknopp/Documents/repos/sites-files/drupal8.blank:/mnt/sites-files
-      - /Users/kknopp/Documents/repos/drupal8.blank:/var/www/site
+      - /Users/kknopp/Sites/sites-files/d8blank:/mnt/sites-files
+      - /Users/kknopp/Sites/d8blank:/var/www/site
     links:
       - mysql:mysql
     restart: always
