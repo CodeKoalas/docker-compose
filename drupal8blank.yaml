@@ -25,10 +25,12 @@ services:
       DRUPAL_TRUSTED_HOSTS: d8blank\.dev$$
       DRUPAL_HTTPS: "off"
       APACHE_DOCROOT: /var/www/site/docroot
+      LOCAL: "true"
     volumes:
       - /Users/kknopp/Sites/sites-files/d8blank:/mnt/sites-files
       - /Users/kknopp/Sites/d8blank:/var/www/site
-      - /Users/kknopp/.ssh:/root/.ssh
+    ports:
+      - "9000:9000"
     links:
       - d8blank-mysql:mysql
     restart: always
