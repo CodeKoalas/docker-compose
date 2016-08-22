@@ -10,6 +10,7 @@ services:
       MYSQL_PASSWORD: mysql
     volumes:
       - /Users/kknopp/Sites/sites-databass/d8blank:/var/lib/mysql
+    command: mysqld --max_allowed_packet=64M
     restart: always
   d8blank:
     container_name: d8blank
