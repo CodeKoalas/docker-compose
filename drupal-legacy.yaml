@@ -1,7 +1,7 @@
 version: '2'
 services:
-  legacy-mysql:
-    container_name: legacy-mysql
+  d7legacy-mysql:
+    container_name: d7legacy-mysql
     image: mysql:5.6
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -9,13 +9,14 @@ services:
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
     volumes:
-      - /Users/kknopp/Sites/sites-databass/d8blank:/var/lib/mysql
+      - /Users/kknopp/Sites/sites-databases/drupal-d7legacy:/var/lib/mysql
+    command: mysqld --max_allowed_packet=64M
     restart: always
-  legacy:
-    container_name: legacy
+  d7legacy:
+    container_name: d7legacy
     image: codekoalas/drupal-legacy
     environment:
-      VIRTUAL_HOST: .legacy.dev
+      VIRTUAL_HOST: .d7legacy.dev
       GIT_HOSTS: "10.170.3.208 gitlab.codekoalas.com"
       GIT_REPO: https://gitlab.codekoalas.com/dev-utilities/drupal7blank.git
       GIT_BRANCH: master
@@ -23,18 +24,16 @@ services:
       MYSQL_DATABASE: drupal
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
-      DRUPAL_BASE_URL: http://legacy.dev
-      DRUPAL_TRUSTED_HOSTS: legacy\.dev$$
+      DRUPAL_BASE_URL: http://d7legacy.dev
+      DRUPAL_TRUSTED_HOSTS: d7legacy\.dev$$
       DRUPAL_HTTPS: "off"
       APACHE_DOCROOT: /var/www/site/docroot
       WWW: "false"
-      PRODUCTION: "true"
+      PRODUCTION: "false"
       SESMailHub: mail-relay.ckdev.io
     volumes:
-      - /Users/kknopp/Sites/sites-files/d8blank:/mnt/sites-files
-      - /Users/kknopp/Sites/d8blank:/var/www/site
-    ports:
-      - "9000:9000"
+      - /Users/kknopp/Sites/sites-files/drupal-d7legacy:/mnt/sites-files
+      - /Users/kknopp/Sites/drupal-d7legacy:/var/www/site
     links:
-      - legacy-mysql:mysql
+      - d7legacy-mysql:mysql
     restart: always
