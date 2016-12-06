@@ -10,6 +10,8 @@ services:
       MYSQL_PASSWORD: mysql
     volumes:
       - /Users/kknopp/Sites/sites-databases/drupal-d7legacy:/var/lib/mysql
+    networks:
+      - dockercompose
     command: mysqld --max_allowed_packet=64M
     restart: always
   d7legacy:
@@ -34,6 +36,12 @@ services:
     volumes:
       - /Users/kknopp/Sites/sites-files/drupal-d7legacy:/mnt/sites-files
       - /Users/kknopp/Sites/drupal-d7legacy:/var/www/site
+    networks:
+      - dockercompose
     links:
       - d7legacy-mysql:mysql
     restart: always
+networks:
+  dockercompose:
+    external:
+      name: dockercompose_dockercompose
