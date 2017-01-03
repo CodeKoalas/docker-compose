@@ -9,7 +9,7 @@ services:
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
     volumes:
-      - /Users/kknopp/Sites/sites-databases/d8blank:/var/lib/mysql
+      - ~/Sites/sites-databases/d8blank:/var/lib/mysql
     networks:
       - dockercompose
     command: mysqld --max_allowed_packet=64M
@@ -32,12 +32,14 @@ services:
       APACHE_DOCROOT: /var/www/site/docroot
       PRODUCTION: "false"
       SESMailHub: mail-relay.ckdev.io
-      #LOCAL: "true"
+      LOCAL: "true"
     volumes:
-      - /Users/kknopp/Sites/sites-files/d8blank:/mnt/sites-files
-      - /Users/kknopp/Sites/d8blank:/var/www/site
+      - ~/Sites/sites-files/d8blank:/mnt/sites-files
+      - ~/Sites/d8blank:/var/www/site
     networks:
       - dockercompose
+    extra_hosts:
+      - "xdebug:192.168.237.237"
     links:
       - d8blank-mysql:mysql
     restart: always

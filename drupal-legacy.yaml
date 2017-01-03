@@ -9,7 +9,7 @@ services:
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
     volumes:
-      - /Users/kknopp/Sites/sites-databases/drupal-d7legacy:/var/lib/mysql
+      - ~/Sites/sites-databases/drupal-d7legacy:/var/lib/mysql
     networks:
       - dockercompose
     command: mysqld --max_allowed_packet=64M
@@ -34,10 +34,12 @@ services:
       PRODUCTION: "false"
       SESMailHub: mail-relay.ckdev.io
     volumes:
-      - /Users/kknopp/Sites/sites-files/drupal-d7legacy:/mnt/sites-files
-      - /Users/kknopp/Sites/drupal-d7legacy:/var/www/site
+      - ~/Sites/sites-files/drupal-d7legacy:/mnt/sites-files
+      - ~/Sites/drupal-d7legacy:/var/www/site
     networks:
       - dockercompose
+    extra_hosts:
+      - "xdebug:192.168.237.237"
     links:
       - d7legacy-mysql:mysql
     restart: always

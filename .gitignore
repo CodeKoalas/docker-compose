@@ -1,0 +1,4 @@
+*.yaml
+!drupal8blank.yaml
+!drupal-legacy.yaml
+!devenv.yaml
