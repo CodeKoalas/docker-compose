@@ -30,7 +30,6 @@ services:
       DRUPAL_HTTPS: "off"
       APACHE_DOCROOT: /var/www/site/docroot
       PRODUCTION: "false"
-      SESmailhub: mail-relay.ckdev.io:25
       LOCAL: "true"
     volumes:
       - ~/Sites/sites-files/d8blank:/mnt/sites-files

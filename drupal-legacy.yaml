@@ -31,7 +31,6 @@ services:
       APACHE_DOCROOT: /var/www/site/docroot
       WWW: "false"
       PRODUCTION: "false"
-      SESMailHub: mail-relay.ckdev.io
     volumes:
       - ~/Sites/sites-files/drupal-d7legacy:/mnt/sites-files
       - ~/Sites/drupal-d7legacy:/var/www/site
