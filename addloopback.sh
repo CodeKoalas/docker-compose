@@ -22,7 +22,7 @@ echo "<?xml version="1.0" encoding="UTF-8"?>
       <key>StandardOutPath</key>
       <string>/var/log/loopback-alias.log</string>
   </dict>
-</plist>" | sudo tee -a /Library/LaunchDaemons/com.runlevel1.lo0.192.168.237.237.plist
+</plist>" | sudo tee /Library/LaunchDaemons/com.runlevel1.lo0.192.168.237.237.plist
 
 chmod 0644 /Library/LaunchDaemons/com.runlevel1.lo0.192.168.237.237.plist
 
