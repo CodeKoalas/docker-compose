@@ -1,0 +1,17 @@
+version: '2'
+services:
+  nginx-proxy:
+    image: codekoalas/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+    - "80:80"
+    - "443:443"
+    volumes:
+    - ~/dockerbuild/docker-compose/certs:/etc/nginx/certs
+    - /var/run/docker.sock:/tmp/docker.sock
+    networks:
+    - dockercompose
+    restart: always
+networks:
+  dockercompose:
+    driver: bridge

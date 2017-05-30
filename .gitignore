@@ -2,4 +2,5 @@
 !drupal8blank.yaml
 !drupal-legacy.yaml
 !devenv.yaml
+!devenv-s.yaml
 cpu.cfs_period_us
