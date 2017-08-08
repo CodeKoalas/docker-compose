@@ -1,11 +1,12 @@
 version: '2'
 services:
-  sample-node-site:
-    container_name: sample-node-site
+  admin-livekc:
+    container_name: admin-livekc
     image: codekoalas/nginx-node
     environment:
-      VIRTUAL_HOST: .sample-node-site.dev
-      GIT_REPO: https://gitlab.codekoalas.com/sites/sample-node-site.git
+      VIRTUAL_HOST: .admin-livekc.dev
+      GIT_HOSTS: "10.170.3.208 gitlab.codekoalas.com"
+      GIT_REPO: https://gitlab.codekoalas.com/sites/LiveKC-Jumbotron.git
       GIT_BRANCH: master
       NODE_PREP: "npm run setup && npm run compile"
     restart: always
