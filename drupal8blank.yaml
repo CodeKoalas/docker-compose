@@ -19,7 +19,6 @@ services:
     image: codekoalas/drupal8
     environment:
       VIRTUAL_HOST: .d8blank.dev
-      GIT_HOSTS: "10.170.3.208 gitlab.codekoalas.com"
       GIT_REPO: https://gitlab.codekoalas.com/dev-utilities/drupal8blank.git
       GIT_BRANCH: master
       MYSQL_SERVER: mysql
@@ -31,7 +30,6 @@ services:
       DRUPAL_HTTPS: "off"
       APACHE_DOCROOT: /var/www/site/docroot
       PRODUCTION: "false"
-      SESmailhub: mail-relay.ckdev.io:25
       LOCAL: "true"
     volumes:
       - ~/Sites/sites-files/d8blank:/mnt/sites-files
