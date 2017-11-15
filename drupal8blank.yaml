@@ -19,7 +19,6 @@ services:
     image: codekoalas/drupal8
     environment:
       VIRTUAL_HOST: .d8blank.dev
-      GIT_HOSTS: "10.170.3.208 gitlab.codekoalas.com"
       GIT_REPO: https://gitlab.codekoalas.com/dev-utilities/drupal8blank.git
       GIT_BRANCH: master
       MYSQL_SERVER: mysql
@@ -40,6 +39,7 @@ services:
       - dockercompose
     extra_hosts:
       - "xdebug:192.168.237.237"
+      - "gitlab.codekoalas.com:10.170.3.208"
     links:
       - d8blank-mysql:mysql
     restart: always

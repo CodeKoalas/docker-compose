@@ -3,4 +3,5 @@
 !drupal-legacy.yaml
 !devenv.yaml
 !devenv-s.yaml
+!wordpress.yaml
 cpu.cfs_period_us
